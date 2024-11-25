@@ -1,7 +1,14 @@
 package org.northcoders.model;
-import java.util.ArrayList;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
+import java.util.ArrayList;
+@JsonIgnoreProperties(ignoreUnknown = true)
 public record Book(
-        ArrayList<BookData> books
+//        String status,
+//        int code,
+//        String locale,
+//        String seed,
+//        int total,
+        ArrayList<BookData> data
 ) {
 }

@@ -9,7 +9,7 @@ public record BookData(
         String author,
         String genre,
         String description,
-        LocalDate published,
+//        LocalDate published,
         String publisher) {
 
 }
