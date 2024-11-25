@@ -2,16 +2,23 @@ package org.northcoders.dao;
 
 import org.springframework.web.reactive.function.client.WebClient;
 
-public class FakeBooksDAO {
-    static WebClient webClient = WebClient.builder().baseUrl("https://fakerapi.it/").build();
+import java.util.Map;
 
-    public static String getResponseBody(){
+public class FakeBooksDAO {
+    static WebClient webClient = WebClient.builder().baseUrl("https://fakerapi.it/api/v2").build();
+
+    public static String getResponseBody(Map<String, String> urlMapper){
         String responseBody = webClient // Reassign the result to a String
                 .get()
-                .uri("/api/v1/books")
+                .uri(uriBuilder -> { uriBuilder.path("/books/");
+                urlMapper.forEach(uriBuilder))}
                 .retrieve()
                     .bodyToMono(String.class) // Bind the returned JSON body to a String
                     .block();
+
+
         return responseBody;
+
+
 }
 }
