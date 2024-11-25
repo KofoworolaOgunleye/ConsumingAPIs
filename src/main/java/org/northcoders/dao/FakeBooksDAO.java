@@ -10,8 +10,11 @@ public class FakeBooksDAO {
     public static String getResponseBody(Map<String, String> urlMapper){
         String responseBody = webClient // Reassign the result to a String
                 .get()
-                .uri(uriBuilder -> { uriBuilder.path("/books/");
-                urlMapper.forEach(uriBuilder))}
+                .uri(uriBuilder -> {
+                    uriBuilder.path("/books/");
+                    urlMapper.forEach(uriBuilder::queryParam);
+                    return uriBuilder.build();
+                })
                 .retrieve()
                     .bodyToMono(String.class) // Bind the returned JSON body to a String
                     .block();
