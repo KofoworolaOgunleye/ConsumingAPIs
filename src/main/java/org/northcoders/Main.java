@@ -7,7 +7,10 @@ import java.util.Map;
 
 public class Main {
     public static void main(String[] args) {
-       String results = FakeBooksDAO.getResponseBody(new Map<>("Books All", "/Books"));
+//       String results = FakeBooksDAO.getResponseBody();
+        Map<String, String> urlMappers = Map.of("title","Dodo managed it.).");
+
+        String results = FakeBooksDAO.getResponseBody(urlMappers);
         System.out.println(results);
     }
 }
