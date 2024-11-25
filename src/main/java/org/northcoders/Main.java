@@ -1,7 +1,10 @@
 package org.northcoders;
 
+import org.northcoders.dao.FakeBooksDAO;
+
 public class Main {
     public static void main(String[] args) {
-        System.out.println("Hello world!");
+       String results = FakeBooksDAO.getResponseBody();
+        System.out.println(results);
     }
 }
